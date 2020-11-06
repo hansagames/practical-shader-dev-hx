@@ -1,9 +1,9 @@
 package ch02;
 
+import VectorMath.Vec3;
 import js.Browser;
 import js.html.KeyboardEvent;
 import types.Types.IShader;
-import gl_matrix.Vec3;
 import utils.Mesh3D;
 import utils.BaseOfApp;
 import utils.Material;
@@ -44,9 +44,9 @@ class RedTriangle extends BaseOfApp {
 		shader = new Material(ctx);
 		shader.load(vertex, fragment);
 		triangle = new Mesh3D(ctx, shader.program);
-		triangle.addVertex(Vec3.fromValues(-width * 0.5, height * 0.5, 0));
-		triangle.addVertex(Vec3.fromValues(height * 0.5, width * 0.5, 0));
-		triangle.addVertex(Vec3.fromValues(width * 0.5, -height * 0.5, 0));
+		triangle.addVertex(new Vec3(-width * 0.5, height * 0.5, 0));
+		triangle.addVertex(new Vec3(height * 0.5, width * 0.5, 0));
+		triangle.addVertex(new Vec3(width * 0.5, -height * 0.5, 0));
 		triangle.build();
 	}
 
@@ -58,7 +58,7 @@ class RedTriangle extends BaseOfApp {
 	}
 	private function onKeyPressed(e: KeyboardEvent): Void {
 		final curPos = triangle.getVertex(0);
-		triangle.setVertex(0, Vec3.add(Vec3.create(), curPos, Vec3.set(Vec3.create(), 0, 1, 0) ));
+		triangle.setVertex(0, curPos + new Vec3(0, 1, 0));
 		triangle.build();
 	}
 }

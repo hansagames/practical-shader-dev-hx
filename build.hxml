@@ -1,5 +1,6 @@
 -cp src
--lib gl_matrix
+-lib vector-math
+-lib haxe-loader
 --main Main
 --js bin/main.js
 --debug

@@ -17,7 +17,22 @@ module.exports = {
           options: {
             debug: true
           }
-        }
+        },
+        {
+          test: /\.glsl$/,
+          loader: 'webpack-glsl-loader'
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+                options: {
+                  esModule: false,
+                },
+            },
+          ],
+        },
       ]
     },
     plugins: [

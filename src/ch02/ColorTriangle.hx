@@ -1,10 +1,10 @@
 package ch02;
 
-import gl_matrix.Vec4;
+import VectorMath.Vec3;
+import VectorMath.Vec4;
 import js.Browser;
 import js.html.KeyboardEvent;
 import types.Types.IShader;
-import gl_matrix.Vec3;
 import utils.Mesh3D;
 import utils.BaseOfApp;
 import utils.Material;
@@ -49,13 +49,13 @@ class ColorTriangle extends BaseOfApp {
 		shader = new Material(ctx);
 		shader.load(vertex, fragment);
 		triangle = new Mesh3D(ctx, shader.program);
-		triangle.addVertex(Vec3.fromValues(-width * 0.5, height * 0.5, 0));
-		triangle.addVertex(Vec3.fromValues(height * 0.5, width * 0.5, 0));
-		triangle.addVertex(Vec3.fromValues(width * 0.5, -height * 0.5, 0));
+		triangle.addVertex(new Vec3(-width * 0.5, height * 0.5, 0));
+		triangle.addVertex(new Vec3(height * 0.5, width * 0.5, 0));
+		triangle.addVertex(new Vec3(width * 0.5, -height * 0.5, 0));
 
-		triangle.addColor(Vec4.fromValues(1, 0, 0, 1));
-		triangle.addColor(Vec4.fromValues(0, 1, 0, 1));
-		triangle.addColor(Vec4.fromValues(0, 0, 1, 1));
+		triangle.addColor(new Vec4(1, 0, 0, 1));
+		triangle.addColor(new Vec4(0, 1, 0, 1));
+		triangle.addColor(new Vec4 (0, 0, 1, 1));
 		triangle.build();
 	}
 
