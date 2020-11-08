@@ -1,21 +1,18 @@
 {
 	"devDependencies": {
-		"dts2hx": "^0.13.3",
+		"@webpack-cli/serve": "^1.1.0",
 		"file-loader": "^6.2.0",
-		"haxe-loader": "^0.10.0",
-		"html-webpack-plugin": "^4.3.0",
+		"haxe-loader": "^0.8.0",
+		"html-webpack-plugin": "^4.5.0",
 		"lix": "^15.10.1",
-		"url-loader": "^4.1.1",
-		"webpack": "^4.44.1",
-		"webpack-cli": "^3.3.12",
+		"webpack": "^5.4.0",
+		"webpack-cli": "^4.2.0",
 		"webpack-dev-server": "^3.11.0",
 		"webpack-glsl-loader": "^1.0.1"
 	},
 	"scripts": {
-		"postinstall": "lix download && npx dts2hx gl-matrix",
-		"start": "webpack-dev-server"
+		"postinstall": "lix download",
+		"start": "webpack serve"
 	},
-	"dependencies": {
-		"gl-matrix": "^3.3.0"
-	}
+	"name": "practical-shader-dev-hx"
 }

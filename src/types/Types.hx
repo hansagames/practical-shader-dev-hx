@@ -8,6 +8,9 @@ import js.html.webgl.Program;
 interface BaseApp {
 	// public function update():Void;
 	public function draw(delta:Float):Void;
+	public function setBlendingMode(source: Int, destination: Int): Void;
+	public function enableDepthTest(): Void;
+	public function disableDepthTest(): Void;
 }
 
 interface Mesh {
@@ -27,6 +30,7 @@ interface IShader {
 	public function begin():Void;
 	public function end():Void;
 	public function setUniform4f(name: String, v: Vec4): Void;
+	public function setUniform2f(name: String, v: Vec2): Void;
 	public function setUniform1f(name: String, f: Float): Void;
-	public function setUniformTexture(name: String, src: String): Void;
+	public function setUniformTexture(name: String, src: String, slot: Int, ?flipY: Int): Void;
 }

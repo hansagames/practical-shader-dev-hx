@@ -1,5 +1,7 @@
 package utils;
 
+import VectorMath.log;
+import VectorMath.Vec2;
 import js.html.webgl.UniformLocation;
 import VectorMath.Vec4;
 import types.Types.IShader;
@@ -13,6 +15,8 @@ class Material implements IShader {
 
 	public var program:Program;
 
+	private var slot = 0;
+
 	public function new(ctx:RenderingContext) {
 		this.ctx = ctx;
 	}
@@ -24,11 +28,10 @@ class Material implements IShader {
 
 	public function begin() {
 		ctx.useProgram(program);
-		ctx.pixelStorei(RenderingContext.UNPACK_FLIP_Y_WEBGL, 1);
-		ctx.texParameteri(RenderingContext.TEXTURE_2D, RenderingContext.TEXTURE_WRAP_S, RenderingContext.REPEAT);
-		ctx.texParameteri(RenderingContext.TEXTURE_2D, RenderingContext.TEXTURE_WRAP_T, RenderingContext.REPEAT);
-		for (i in 0...textures.length) {
-			ctx.uniform1i(textures[i], i);
+		if (textures.length > 0) {
+			ctx.texParameteri(RenderingContext.TEXTURE_2D, RenderingContext.TEXTURE_WRAP_S, RenderingContext.CLAMP_TO_EDGE);
+			ctx.texParameteri(RenderingContext.TEXTURE_2D, RenderingContext.TEXTURE_WRAP_T, RenderingContext.CLAMP_TO_EDGE);
+			ctx.uniform1i(textures[0], slot);
 		}
 	}
 
@@ -38,14 +41,19 @@ class Material implements IShader {
 		final location = ctx.getUniformLocation(program, name);
 		ctx.uniform4f(location, v.x, v.y, v.z, v.w);
 	}
+	public function setUniform2f(name: String, v: Vec2): Void {
+		final location = ctx.getUniformLocation(program, name);
+		ctx.uniform2f(location, v.x, v.y);
+	}
 	public function setUniform1f(name: String, f: Float): Void {
 		final location = ctx.getUniformLocation(program, name);
 		if (location != null) {
 			ctx.uniform1f(location, f);
 		}
 	}
-	public function setUniformTexture(name: String, src: String): Void {
-		new Texture(src, ctx, textures.length);
+	public function setUniformTexture(name: String, src: String, slot: Int, ?flipY = 1): Void {
+		this.slot = slot;
+		new Texture(src, ctx, slot, flipY);
 		final textureLocation = ctx.getUniformLocation(program, name);
 		if (textureLocation != null) {
 			textures.push(textureLocation);
