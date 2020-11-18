@@ -12,6 +12,7 @@ import ch04.GreenMan;
 import ch04.DepthTest;
 import ch04.AlphaBlending;
 import ch04.SpriteSheet;
+import ch05.WalkingMan;
 
 class Main {
 	public function new() {
@@ -26,7 +27,8 @@ class Main {
 		// new GreenMan();
 		// new DepthTest();
 		// new AlphaBlending();
-		new SpriteSheet();
+		// new SpriteSheet();
+		new WalkingMan();
 	}
 
 	static function main() {

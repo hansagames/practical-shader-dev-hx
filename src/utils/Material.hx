@@ -1,6 +1,8 @@
 package utils;
 
-import VectorMath.log;
+import js.lib.Float32Array;
+import VectorMath.Mat4;
+import VectorMath.Vec3;
 import VectorMath.Vec2;
 import js.html.webgl.UniformLocation;
 import VectorMath.Vec4;
@@ -41,6 +43,10 @@ class Material implements IShader {
 		final location = ctx.getUniformLocation(program, name);
 		ctx.uniform4f(location, v.x, v.y, v.z, v.w);
 	}
+	public function setUniform3f(name: String, v: Vec3): Void {
+		final location = ctx.getUniformLocation(program, name);
+		ctx.uniform3f(location, v.x, v.y, v.z);
+	}
 	public function setUniform2f(name: String, v: Vec2): Void {
 		final location = ctx.getUniformLocation(program, name);
 		ctx.uniform2f(location, v.x, v.y);
@@ -57,6 +63,12 @@ class Material implements IShader {
 		final textureLocation = ctx.getUniformLocation(program, name);
 		if (textureLocation != null) {
 			textures.push(textureLocation);
+		}
+	}
+	public function setUniformMatrix4f(name: String, m: Float32Array): Void {
+		final location = ctx.getUniformLocation(program, name);
+		if (location != null) {
+			ctx.uniformMatrix4fv(location, false, m);
 		}
 	}
 }

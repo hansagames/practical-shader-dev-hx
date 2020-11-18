@@ -2,7 +2,7 @@
 	"devDependencies": {
 		"@webpack-cli/serve": "^1.1.0",
 		"file-loader": "^6.2.0",
-		"haxe-loader": "^0.8.0",
+		"haxe-loader": "^0.10.0",
 		"html-webpack-plugin": "^4.5.0",
 		"lix": "^15.10.1",
 		"webpack": "^5.4.0",

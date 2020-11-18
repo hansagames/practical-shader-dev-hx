@@ -1,9 +1,11 @@
 package types;
 
+import VectorMath.Mat4;
 import VectorMath.Vec2;
 import VectorMath.Vec4;
 import VectorMath.Vec3;
 import js.html.webgl.Program;
+import js.lib.Float32Array;
 
 interface BaseApp {
 	// public function update():Void;
@@ -30,7 +32,9 @@ interface IShader {
 	public function begin():Void;
 	public function end():Void;
 	public function setUniform4f(name: String, v: Vec4): Void;
+	public function setUniform3f(name: String, v: Vec3): Void;
 	public function setUniform2f(name: String, v: Vec2): Void;
 	public function setUniform1f(name: String, f: Float): Void;
+	public function setUniformMatrix4f(name: String, m: Float32Array): Void;
 	public function setUniformTexture(name: String, src: String, slot: Int, ?flipY: Int): Void;
 }
