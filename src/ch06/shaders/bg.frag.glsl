@@ -1,0 +1,12 @@
+#version 300 es
+precision highp float;
+
+out vec4 outColor;
+in vec2 fragUV;
+
+uniform sampler2D bg;
+
+void main() {
+	vec4 tex = texture(bg, fragUV);
+	outColor = tex;
+}

@@ -13,6 +13,8 @@ import ch04.DepthTest;
 import ch04.AlphaBlending;
 import ch04.SpriteSheet;
 import ch05.WalkingMan;
+import ch06.Cameras;
+import ch07.PerspectiveTorus;
 
 class Main {
 	public function new() {
@@ -28,7 +30,9 @@ class Main {
 		// new DepthTest();
 		// new AlphaBlending();
 		// new SpriteSheet();
-		new WalkingMan();
+		// new WalkingMan();
+		// new Cameras();
+		new PerspectiveTorus();
 	}
 
 	static function main() {

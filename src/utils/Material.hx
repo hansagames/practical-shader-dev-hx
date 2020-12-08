@@ -65,10 +65,30 @@ class Material implements IShader {
 			textures.push(textureLocation);
 		}
 	}
-	public function setUniformMatrix4f(name: String, m: Float32Array): Void {
+	public function setUniformMatrix4f(name: String, m: Mat4): Void {
+		final convertedM = new Float32Array(16);
+		convertedM[0] = m[0].x;
+		convertedM[1] = m[0].y;
+		convertedM[2] = m[0].z;
+		convertedM[3] = m[0].w;
+
+		convertedM[4] = m[1].x;
+		convertedM[5] = m[1].y;
+		convertedM[6] = m[1].z;
+		convertedM[7] = m[1].w;
+
+		convertedM[8] = m[2].x;
+		convertedM[9] = m[2].y;
+		convertedM[10] = m[2].z;
+		convertedM[11] = m[2].w;
+
+		convertedM[12] = m[3].x;
+		convertedM[13] = m[3].y;
+		convertedM[14] = m[3].z;
+		convertedM[15] = m[3].w;
 		final location = ctx.getUniformLocation(program, name);
 		if (location != null) {
-			ctx.uniformMatrix4fv(location, false, m);
+			ctx.uniformMatrix4fv(location, false, convertedM);
 		}
 	}
 }

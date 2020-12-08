@@ -1,6 +1,7 @@
 {
 	"devDependencies": {
 		"@webpack-cli/serve": "^1.1.0",
+		"dts2hx": "^0.15.3",
 		"file-loader": "^6.2.0",
 		"haxe-loader": "^0.10.0",
 		"html-webpack-plugin": "^4.5.0",
@@ -14,5 +15,10 @@
 		"postinstall": "lix download",
 		"start": "webpack serve"
 	},
-	"name": "practical-shader-dev-hx"
+	"name": "practical-shader-dev-hx",
+	"dependencies": {
+		"@loaders.gl/core": "^2.3.6",
+		"@loaders.gl/ply": "^2.3.6",
+		"ogl": "^0.0.60"
+	}
 }

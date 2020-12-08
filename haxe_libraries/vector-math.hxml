@@ -1,3 +1,3 @@
-# @install: lix --silent download "haxelib:/vector-math#1.1.0" into vector-math/1.1.0/haxelib
--cp ${HAXE_LIBCACHE}/vector-math/1.1.0/haxelib/
--D vector-math=1.1.0
+# @install: lix --silent download "gh://github.com/haxiomic/vector-math#1eb3a944d25cb08a637ef9ecb310eb7fae3a7750" into vector-math/1.4.0/github/1eb3a944d25cb08a637ef9ecb310eb7fae3a7750
+-cp ${HAXE_LIBCACHE}/vector-math/1.4.0/github/1eb3a944d25cb08a637ef9ecb310eb7fae3a7750/
+-D vector-math=1.4.0

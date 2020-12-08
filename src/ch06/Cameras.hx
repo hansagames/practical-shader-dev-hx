@@ -1,16 +1,16 @@
-package ch05;
+package ch06;
 
-import VectorMath.Mat4;
+import utils.ViewMatrix.buildViewMatrix;
+import utils.Camera;
+import types.Types.Camera as ICamera;
 import js.lib.Float32Array;
 import utils.Transformation.scale;
 import utils.Transformation.rotate;
 import utils.Transformation.translate;
-import VectorMath.log;
 import js.html.KeyboardEvent;
 import js.Browser;
 import js.html.webgl.RenderingContext;
 import VectorMath.Vec2;
-import VectorMath.Vec4;
 import VectorMath.Vec3;
 import types.Types.IShader;
 import utils.Mesh3D;
@@ -19,7 +19,8 @@ import utils.Material;
 import types.Types.Mesh;
 
 
-class WalkingMan extends BaseOfApp {
+class Cameras extends BaseOfApp {
+	private var camera: ICamera;
 	private var charMesh:Mesh;
 	private var charShader:IShader;
 	private var bgMesh:Mesh;
@@ -34,6 +35,7 @@ class WalkingMan extends BaseOfApp {
 	public function new() {
 		super();
 		charPos = new Vec3(0, 0, 0);
+		camera = new Camera(new Vec3(1, 1, 1), 0.0);
 		Browser.window.addEventListener("keydown", onPress);
 		Browser.window.addEventListener("keyup", onRelease);
 	}
@@ -85,25 +87,32 @@ class WalkingMan extends BaseOfApp {
 			frame = 0.0;
 		}
 		super.draw(delta);
+		final view = buildViewMatrix(camera);
 		enableDepthTest();
 		setBlendingMode(RenderingContext.SRC_ALPHA, RenderingContext.ONE_MINUS_SRC_ALPHA);
 		charShader.begin();
-		charShader.setUniform3f("positionOffset", charPos);
+		charShader.setUniformMatrix4f("view", view);
+		charShader.setUniformMatrix4f("model", translate(charPos));
 		charShader.setUniform2f("size", new Vec2(0.28, 0.19));
 		charShader.setUniform2f("frame", new Vec2(Std.int(frame % 3), Std.int(frame / 3)));
 		charMesh.draw();
 		charShader.end();
 		bgShader.begin();
+		bgShader.setUniformMatrix4f("view", view);
+		bgShader.setUniformMatrix4f("model", translate(new Vec3(0, 0, 0)));
 		bgMesh.draw();
 		bgShader.end();
 		setBlendingMode(RenderingContext.ONE, RenderingContext.ONE);
 		sunShader.begin();
+		sunShader.setUniformMatrix4f("view", view);
+		sunShader.setUniformMatrix4f("model", translate(new Vec3(0, 0, 0)));
 		sunMesh.draw();
 		sunShader.end();
 		setBlendingMode(RenderingContext.SRC_ALPHA, RenderingContext.ONE_MINUS_SRC_ALPHA);
 		disableDepthTest();
 		cloudShader.begin();
-		cloudShader.setUniformMatrix4f("transform", buildMatrix(new Vec3(-0.55, 0, 0), 0, new Vec3(1, 1, 1)));
+		cloudShader.setUniformMatrix4f("view", view);
+		cloudShader.setUniformMatrix4f("model", translate(new Vec3(0, 0, 0)));
 		cloudMesh.draw();
 		cloudShader.end();
 	}
@@ -142,7 +151,28 @@ class WalkingMan extends BaseOfApp {
 			walkRight = false;
 		}
 	}
-	private function buildMatrix(trans: Vec3, rot: Float, scaling: Vec3): Mat4 {
-		return translate(trans) * rotate(rot, new Vec3(0, 0, 1)) * scale(scaling);
+	private function buildMatrix(trans: Vec3, rot: Float, scaling: Vec3): Float32Array {
+		final m = translate(trans) * rotate(rot, new Vec3(0, 0, 1)) * scale(scaling);
+		final result = new Float32Array(16);
+		result[0] = m[0].x;
+		result[1] = m[0].y;
+		result[2] = m[0].z;
+		result[3] = m[0].w;
+
+		result[4] = m[1].x;
+		result[5] = m[1].y;
+		result[6] = m[1].z;
+		result[7] = m[1].w;
+
+		result[8] = m[2].x;
+		result[9] = m[2].y;
+		result[10] = m[2].z;
+		result[11] = m[2].w;
+
+		result[12] = m[3].x;
+		result[13] = m[3].y;
+		result[14] = m[3].z;
+		result[15] = m[3].w;
+		return result;
 	}
 }

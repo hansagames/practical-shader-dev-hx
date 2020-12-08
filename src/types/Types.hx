@@ -35,6 +35,11 @@ interface IShader {
 	public function setUniform3f(name: String, v: Vec3): Void;
 	public function setUniform2f(name: String, v: Vec2): Void;
 	public function setUniform1f(name: String, f: Float): Void;
-	public function setUniformMatrix4f(name: String, m: Float32Array): Void;
+	public function setUniformMatrix4f(name: String, m: Mat4): Void;
 	public function setUniformTexture(name: String, src: String, slot: Int, ?flipY: Int): Void;
+}
+
+interface Camera {
+	public var position: Vec3;
+	public var rotation: Float;
 }
