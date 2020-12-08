@@ -15,6 +15,8 @@ import ch04.SpriteSheet;
 import ch05.WalkingMan;
 import ch06.Cameras;
 import ch07.PerspectiveTorus;
+import ch08.DiffuseLighting;
+import ch08.RimLight;
 
 class Main {
 	public function new() {
@@ -32,7 +34,9 @@ class Main {
 		// new SpriteSheet();
 		// new WalkingMan();
 		// new Cameras();
-		new PerspectiveTorus();
+		// new PerspectiveTorus();
+		// new DiffuseLighting();
+		new RimLight();
 	}
 
 	static function main() {

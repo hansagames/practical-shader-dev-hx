@@ -34,6 +34,10 @@ extern class Vec3 {
     var y: Float;
     var z: Float;
     public function set(x: Float, y: Float, z: Float): Void;
+    public function multiply(v: Float): Vec3;
+    public function negate(?v: Vec3): Vec3;
+    public function normalize(): Vec3;
+    public function clone(): Vec3;
 }
 @:jsRequire("ogl", "Eulor")
 extern class Euler {
