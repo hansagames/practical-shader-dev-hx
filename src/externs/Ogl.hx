@@ -1,5 +1,7 @@
 package externs;
 
+import js.html.Image;
+import js.html.webgl.PowerPreference;
 import js.lib.Float32Array;
 import js.lib.Uint32Array;
 import js.html.webgl.RenderingContext;
@@ -7,6 +9,8 @@ import js.html.webgl.RenderingContext;
 
 typedef RendererOptions = {
     var ?dpr: Float;
+    var ?antialias: Bool;
+    var ?powerPreference: PowerPreference;
 };
 
 @:jsRequire("ogl", "GL")
@@ -76,6 +80,12 @@ typedef CreateProgramProps = {
 @:jsRequire("ogl", "Program")
 extern class Program {
     public function new(gl: GL, options: CreateProgramProps): Void;
+}
+
+@:jsRequire("ogl", "Texture")
+extern class Texture {
+    public var image: Image;
+    public function new(gl: GL): Void;
 }
 
 typedef GeometryData<T> = {

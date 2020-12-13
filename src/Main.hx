@@ -17,6 +17,11 @@ import ch06.Cameras;
 import ch07.PerspectiveTorus;
 import ch08.DiffuseLighting;
 import ch08.RimLight;
+import ch09.SpecularTorus;
+import ch09.DiffuseSpecularTorus;
+import ch09.PhongTorus;
+import ch09.BlinnPhongTorus;
+import ch09.BlinnShield;
 
 class Main {
 	public function new() {
@@ -36,7 +41,12 @@ class Main {
 		// new Cameras();
 		// new PerspectiveTorus();
 		// new DiffuseLighting();
-		new RimLight();
+		// new RimLight();
+		// new SpecularTorus();
+		// new DiffuseSpecularTorus();
+		// new PhongTorus();
+		// new BlinnPhongTorus();
+		new BlinnShield();
 	}
 
 	static function main() {

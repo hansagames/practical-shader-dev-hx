@@ -1,5 +1,6 @@
 package utils;
 
+import js.html.webgl.PowerPreference;
 import externs.Ogl.Renderer;
 import externs.Ogl.Camera;
 import externs.Ogl.GL;
@@ -17,7 +18,11 @@ class OglBase {
 		setup();
     }
     private function createEngine(): Void {
-        renderer = new Renderer({ dpr: 2 });
+        renderer = new Renderer({ 
+            dpr: 2, 
+            antialias: true,
+            powerPreference: PowerPreference.HIGH_PERFORMANCE 
+        });
         gl = renderer.gl;
         Browser.document.body.appendChild(gl.canvas);
 
