@@ -19,13 +19,13 @@ class BlinnShield extends LightModelBase {
                                 lightCol: { value: getLightColor(light) },
                                 lightDir: { value: getLightDirection(light) },
                                 ambientCol: { value: new Vec3(0.0, 0.0, 0.0) },
-                                diffuseTex: { value: loadTexture(Webpack.require("../../assets/shield_diffuse.png")) },
-                                specTex: { value: loadTexture(Webpack.require("../../assets/shield_spec.png")) },
+                                diffuseTex: { value: loadTexture(Webpack.require("../../original/ch9/Assets/shield_diffuse.png")) },
+                                specTex: { value: loadTexture(Webpack.require("../../original/ch9/Assets/shield_spec.png")) },
                         },
                 });
         }
         override function getModel() {
-                return Webpack.require("../../assets/shield.ply");
+                return Webpack.require("../../original/ch9/Assets/shield.ply");
         }
         private function loadTexture(path: String): Texture {
                 final texture = new Texture(gl);

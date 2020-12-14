@@ -42,6 +42,18 @@ extern class Vec3 {
     public function negate(?v: Vec3): Vec3;
     public function normalize(): Vec3;
     public function clone(): Vec3;
+    public function sub(v: Vec3, ?v2: Vec3): Vec3;
+}
+@:jsRequire("ogl", "Vec2")
+extern class Vec2 {
+    public function new(?x: Float, ?y: Float): Void;
+    var x: Float;
+    var y: Float;
+    public function set(x: Float, y: Float): Void;
+    public function multiply(v: Float): Vec2;
+    public function normalize(): Vec2;
+    public function clone(): Vec2;
+    public function sub(v: Vec2, ?v2: Vec2): Vec2;
 }
 @:jsRequire("ogl", "Eulor")
 extern class Euler {
@@ -76,16 +88,23 @@ typedef CreateProgramProps = {
     var vertex: String;
     var fragment: String;
     var ?uniforms: Dynamic;
+    var ?cullFace: Null<Int>;
 }
 @:jsRequire("ogl", "Program")
 extern class Program {
+    public var uniforms: Dynamic;
     public function new(gl: GL, options: CreateProgramProps): Void;
 }
 
+typedef TextureProps = {
+    var ?wrapS: Int;
+    var ?wrapT: Int;
+    var ?flipY: Bool;
+};
 @:jsRequire("ogl", "Texture")
 extern class Texture {
     public var image: Image;
-    public function new(gl: GL): Void;
+    public function new(gl: GL, ?options: TextureProps): Void;
 }
 
 typedef GeometryData<T> = {
@@ -98,6 +117,7 @@ typedef CreateGeometryProps = {
     var uv: GeometryData<Float32Array>;
     var normal: GeometryData<Float32Array>;
     var ?index: GeometryData<Uint32Array>;
+    var ?tangent: GeometryData<Float32Array>;
 }
 @:jsRequire("ogl", "Geometry")
 extern class Geometry {

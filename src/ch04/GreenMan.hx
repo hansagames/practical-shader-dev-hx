@@ -25,7 +25,7 @@ class GreenMan extends BaseOfApp {
 			Webpack.require("./shaders/green-man.vert.glsl"),
 			Webpack.require("./shaders/green-man.frag.glsl")
 		);
-		shader.setUniformTexture("greenMan", Webpack.require("../../assets/alien.png"), 0);
+		shader.setUniformTexture("greenMan", Webpack.require("../../original/ch4/Assets/alien.png"), 0);
 		charMesh = new Mesh3D(ctx, shader.program);
 		buildMesh(charMesh, 0.25, 0.5, new Vec3(0, 0.15, 0));
 		charMesh.build();

@@ -22,6 +22,8 @@ import ch09.DiffuseSpecularTorus;
 import ch09.PhongTorus;
 import ch09.BlinnPhongTorus;
 import ch09.BlinnShield;
+import ch10.NormalMapping;
+import ch10.Water;
 
 class Main {
 	public function new() {
@@ -46,7 +48,9 @@ class Main {
 		// new DiffuseSpecularTorus();
 		// new PhongTorus();
 		// new BlinnPhongTorus();
-		new BlinnShield();
+		// new BlinnShield();
+		// new NormalMapping();
+		new Water();
 	}
 
 	static function main() {

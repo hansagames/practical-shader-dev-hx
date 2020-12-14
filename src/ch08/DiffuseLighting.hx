@@ -25,7 +25,7 @@ class DiffuseLighting extends OglBase {
 	override private function setup():Void {
         super.setup();
         Loader.load(
-            Webpack.require("../../assets/torus.ply"),
+            Webpack.require("../../original/ch8/Assets/torus.ply"),
             PLYLoader,
             {}
         ).then(r -> {

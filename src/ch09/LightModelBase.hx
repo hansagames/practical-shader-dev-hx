@@ -49,7 +49,7 @@ abstract class LightModelBase extends OglBase {
     
 	abstract private function createShader(): Program;
 	private function getModel() {
-		return Webpack.require("../../assets/torus.ply");
+		return Webpack.require("../../original/ch9/Assets/torus.ply");
 	}
 	private function rotateMesh(dt:Float) {
 		mesh.rotation.x += 0.01;

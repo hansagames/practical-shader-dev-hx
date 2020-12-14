@@ -25,7 +25,7 @@ class Brightness extends BaseOfApp {
 			Webpack.require("./shaders/brightness.vert.glsl"),
 			Webpack.require("./shaders/brightness.frag.glsl")
 		);
-		shader.setUniformTexture("parrotTex", Webpack.require("../../assets/parrot.png"), 0);
+		shader.setUniformTexture("parrotTex", Webpack.require("../../original/ch3/Assets/parrot.png"), 0);
 		quad = new Mesh3D(ctx, shader.program);
 		quad.addVertex(new Vec3(-1, -1, 0));
 		quad.addVertex(new Vec3(-1, 1, 0));

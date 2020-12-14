@@ -47,25 +47,25 @@ class Cameras extends BaseOfApp {
 			Webpack.require("./shaders/bg.vert.glsl"),
 			Webpack.require("./shaders/bg.frag.glsl")
 		);
-		bgShader.setUniformTexture("bg", Webpack.require("../../assets/forest.png"), 1);
+		bgShader.setUniformTexture("bg", Webpack.require("../../original/ch6/Assets/forest.png"), 1);
 		charShader = new Material(ctx);
 		charShader.load(
 			Webpack.require("./shaders/spriteSheet.vert.glsl"),
 			Webpack.require("./shaders/green-man.frag.glsl")
 		);
-		charShader.setUniformTexture("greenMan", Webpack.require("../../assets/walk_sheet.png"), 0, 0);
+		charShader.setUniformTexture("greenMan", Webpack.require("../../original/ch6/Assets/walk_sheet.png"), 0, 0);
 		cloudShader = new Material(ctx);
 		cloudShader.load(
 			Webpack.require("./shaders/cloud.vert.glsl"),
 			Webpack.require("./shaders/cloud.frag.glsl")
 		);
-		cloudShader.setUniformTexture("cloud", Webpack.require("../../assets/cloud.png"), 2);
+		cloudShader.setUniformTexture("cloud", Webpack.require("../../original/ch6/Assets/cloud.png"), 2);
 		sunShader = new Material(ctx);
 		sunShader.load(
 			Webpack.require("./shaders/sun.vert.glsl"),
 			Webpack.require("./shaders/sun.frag.glsl")
 		);
-		sunShader.setUniformTexture("sun", Webpack.require("../../assets/sun.png"), 3);
+		sunShader.setUniformTexture("sun", Webpack.require("../../original/ch6/Assets/sun.png"), 3);
 		charMesh = new Mesh3D(ctx, charShader.program);
 		buildMesh(charMesh, 0.05, 0.1, new Vec3(0, -0.345, 0));
 		charMesh.build();
