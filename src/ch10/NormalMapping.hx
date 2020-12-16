@@ -1,5 +1,6 @@
 package ch10;
 
+import utils.LoadTexture.loadTexture;
 import externs.Ogl.Program;
 import externs.Ogl.Vec3;
 import utils.DirectionalLight;
@@ -16,9 +17,9 @@ class NormalMapping extends NormalMappingBase {
 				lightCol: {value: getLightColor(light)},
 				lightDir: {value: getLightDirection(light)},
 				ambientCol: {value: new Vec3(0.0, 0.0, 0.0)},
-				diffuseTex: {value: loadTexture(Webpack.require("../../original/ch10/Assets/shield_diffuse.png"))},
-				specTex: {value: loadTexture(Webpack.require("../../original/ch10/Assets/shield_spec.png"))},
-				normalTex: {value: loadTexture(Webpack.require("../../original/ch10/Assets/shield_normal.png"))},
+				diffuseTex: {value: loadTexture(Webpack.require("../../original/ch10/Assets/shield_diffuse.png"), gl)},
+				specTex: {value: loadTexture(Webpack.require("../../original/ch10/Assets/shield_spec.png"), gl)},
+				normalTex: {value: loadTexture(Webpack.require("../../original/ch10/Assets/shield_normal.png"), gl)},
 			},
 		});
 	}

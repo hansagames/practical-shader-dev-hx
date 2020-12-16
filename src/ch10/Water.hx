@@ -1,5 +1,6 @@
 package ch10;
 
+import utils.LoadTexture.loadTexture;
 import js.html.webgl.WebGL2RenderingContext;
 import externs.Ogl.Program;
 import externs.Ogl.Vec3;
@@ -20,6 +21,7 @@ class Water extends NormalMappingBase {
 				lightDir: {value: getLightDirection(light)},
 				normalTex: {value: loadTexture(
 					Webpack.require("../../original/ch10/Assets/water_nrm.png"),
+					gl,
 					{
 						wrapS: WebGL2RenderingContext.REPEAT,
 						wrapT: WebGL2RenderingContext.REPEAT,

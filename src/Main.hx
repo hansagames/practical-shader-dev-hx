@@ -24,6 +24,8 @@ import ch09.BlinnPhongTorus;
 import ch09.BlinnShield;
 import ch10.NormalMapping;
 import ch10.Water;
+import ch11.CubeMap;
+import ch11.SkyBox;
 
 class Main {
 	public function new() {
@@ -50,7 +52,9 @@ class Main {
 		// new BlinnPhongTorus();
 		// new BlinnShield();
 		// new NormalMapping();
-		new Water();
+		// new Water();
+		// new CubeMap();
+		new SkyBox();
 	}
 
 	static function main() {

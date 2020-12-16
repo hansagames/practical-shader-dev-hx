@@ -1,5 +1,6 @@
 package externs;
 
+import haxe.extern.EitherType;
 import js.html.Image;
 import js.html.webgl.PowerPreference;
 import js.lib.Float32Array;
@@ -89,6 +90,9 @@ typedef CreateProgramProps = {
     var fragment: String;
     var ?uniforms: Dynamic;
     var ?cullFace: Null<Int>;
+    var ?depthTest: Bool;
+    var ?depthFunc: Int;
+    var ?frontFace: Int;
 }
 @:jsRequire("ogl", "Program")
 extern class Program {
@@ -100,10 +104,11 @@ typedef TextureProps = {
     var ?wrapS: Int;
     var ?wrapT: Int;
     var ?flipY: Bool;
+    var ?target: Int;
 };
 @:jsRequire("ogl", "Texture")
 extern class Texture {
-    public var image: Image;
+    public var image: EitherType<Image, Array<Image>>;
     public function new(gl: GL, ?options: TextureProps): Void;
 }
 
@@ -114,8 +119,8 @@ typedef GeometryData<T> = {
 
 typedef CreateGeometryProps = {
     var position: GeometryData<Float32Array>;
-    var uv: GeometryData<Float32Array>;
-    var normal: GeometryData<Float32Array>;
+    var ?uv: GeometryData<Float32Array>;
+    var ?normal: GeometryData<Float32Array>;
     var ?index: GeometryData<Uint32Array>;
     var ?tangent: GeometryData<Float32Array>;
 }
@@ -131,5 +136,7 @@ typedef CreateMeshProps = {
 };
 @:jsRequire("ogl", "Mesh")
 extern class Mesh extends Transform {
+    var scale: Vec3;
+    var program: Program;
     public function new(gl: GL, options: CreateMeshProps): Void;
 }
