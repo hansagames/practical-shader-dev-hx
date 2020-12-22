@@ -43,6 +43,7 @@ extern class Vec3 {
     public function negate(?v: Vec3): Vec3;
     public function normalize(): Vec3;
     public function clone(): Vec3;
+    public function copy(v: Vec3): Vec3;
     public function sub(v: Vec3, ?v2: Vec3): Vec3;
 }
 @:jsRequire("ogl", "Vec2")
@@ -94,6 +95,9 @@ typedef CreateProgramProps = {
     var ?depthFunc: Int;
     var ?frontFace: Int;
 }
+typedef Uniform<T> = {
+    var value: T;
+} 
 @:jsRequire("ogl", "Program")
 extern class Program {
     public var uniforms: Dynamic;

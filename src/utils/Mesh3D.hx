@@ -1,7 +1,6 @@
 package utils;
 
 import js.html.webgl.Buffer;
-import VectorMath.log;
 import VectorMath.Vec2;
 import VectorMath.Vec4;
 import VectorMath.Vec3;

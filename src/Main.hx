@@ -26,6 +26,9 @@ import ch10.NormalMapping;
 import ch10.Water;
 import ch11.CubeMap;
 import ch11.SkyBox;
+import ch12.PointLightExample;
+import ch12.SpotLights;
+import ch12.MultipleLights;
 
 class Main {
 	public function new() {
@@ -54,7 +57,10 @@ class Main {
 		// new NormalMapping();
 		// new Water();
 		// new CubeMap();
-		new SkyBox();
+		// new SkyBox();
+		// new PointLightExample();
+		// new SpotLights();
+		new MultipleLights();
 	}
 
 	static function main() {
